@@ -1,0 +1,60 @@
+Lab 1A Part 1 -----------------
+
+import Scanner
+
+class LabOneA
+    main method
+        scanner = new scanner
+        print("What is your name?")
+        name = scanner get name string
+        print("How old are you?")
+        age = scanner get age number
+        
+        print("its nice to meet you" name " of " age " years old")
+    
+
+Lab 1A Part 2 ----------------
+
+import Random
+
+class LabOneAPartTwo
+
+    takes in array of integers and return and integer
+    function findlargest
+        largest number = first number in input array
+
+        for each number in the array
+            if the number is larger than largest number
+                the number is now largestnumber'
+        close for
+
+        return largestnumber
+    closefunction
+
+    takes in array of integers and return and integer    
+    function generatedata
+        for each number in the array
+            create new random
+            generate random number and randomly multiply by 1 or -1
+        close for
+    closefunction
+    
+    takes in array of integers and return and integer
+    function findlongeststreak
+        count = 0
+
+        for each number in the array
+            if the number > 0
+                add one to count
+            else
+                set count to zero
+    closefunction
+        
+    main method
+        int[] nums = new int[] {1, 1, 13, 22, -25, 22, 21, 23, 22};
+	    int[] data = array length 20
+        
+        generatedata()
+        print data
+        print findlongeststreak
+        print findlargest(data) + findlargest(nums)
