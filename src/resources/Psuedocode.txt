@@ -1,0 +1,41 @@
+abstract class Vacation:
+    private cost, budget, destination
+
+    abstract function, returns int, KeptToBudget (parameters: budget, cost)
+
+end class
+
+class AllInclusiveVaca uses Vacation:
+    public brand, rating, totalCost
+
+    public AllInclusiveVaca {
+        super(cost, budget, destination)
+
+        set brand, rating, totalCost
+    }
+    
+    override
+    KeptToBudget
+        returns 0 //its all inclusive
+
+end class
+
+class PieceMealVaca uses Vacation:
+    public expensesList, costList
+
+    public PieceMealVaca {
+        super(cost, budget, destination)
+
+        set expensesList, costList
+    }
+
+    override
+    KeptToBudget
+        int sum = 0
+        for i in costList:
+            sum += i
+
+        returns budget - sum
+    
+end class
+
