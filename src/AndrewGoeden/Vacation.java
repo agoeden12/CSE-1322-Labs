@@ -5,12 +5,17 @@ package AndrewGoeden;
  */
 public abstract class Vacation{
 
-    private String destination;
-    private int cost, budget;
+    public String destination;
+    public int cost, budget;
 
     public Vacation(int budget, int cost, String destination){
         this.budget = budget;
         this.cost = cost;
+        this.destination = destination;
+    }
+
+    public Vacation(int budget, String destination){
+        this.budget = budget;
         this.destination = destination;
     }
 
@@ -41,7 +46,7 @@ public abstract class Vacation{
     public int getBudget() {
         return budget;
     }
-
+    
     /**
      * @return the cost
      */
@@ -56,7 +61,7 @@ public abstract class Vacation{
         return destination;
     }
 
-    abstract int keptToBudget(int budget, int cost);
+    abstract int keptToBudget();
 
 
 }
