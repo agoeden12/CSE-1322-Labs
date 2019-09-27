@@ -3,5 +3,20 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Labs"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-base-11.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-base-11.0.2-linux.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-controls-11.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-controls-11.0.2-linux.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-graphics-11.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-graphics-11.0.2-linux.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-media-11.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-media-11.0.2-linux.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-web-11.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/javafx-web-11.0.2-linux.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/oauth-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/openid-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/agoeden/Downloads/jar_files/slf4j-api-1.7.27.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
