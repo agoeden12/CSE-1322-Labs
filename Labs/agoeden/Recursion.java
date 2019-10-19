@@ -2,25 +2,17 @@ package agoeden;
 
 public class Recursion {
 
-	public static int returnVowels(String input, int count) {
-		
-		if (input.length() > 1) {
-			String singleLetter = input.substring(0,1);
-			if (singleLetter.toUpperCase().matches(".*[AEIOU].*")) {
-				count++;
-			}
-			return returnVowels(input.substring(1), count);
-		} else {
-			if (input.toUpperCase().matches(".*[AEIOU].*")) {
-				count++;
-			}
-			return count;
-		}
-	}
-	
-	public static void main(String[] args) {
-		String test = "Teesta";
-		
-		System.out.print(returnVowels(test,0));
-	}
+	public static boolean palindromeCheck(String input) {
+    char[] letters = input.toCharArray();
+    if (letters.length < 2) {
+      return true;
+    } else if (letters[0] == letters[letters.length - 1]){
+      return palindromeCheck(input.substring(1, input.length() - 1));
+    }
+    return false;
+  }
+
+  public static void main(String[] args) {
+    System.out.println(palindromeCheck("mam"));
+  }
 }
