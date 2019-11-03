@@ -19,7 +19,7 @@ public class Queue {
     public void dequeue() {
         System.out.println("Item dequeued: " + getItemDescription(front));
 
-        for (int i = 0; i < foods.length; i++) { // this did the first element
+        for (int i = 0; i < foods.length; i++) {
             if (foods[i] != null) {
                 foods[i] = foods[i + 1];
             }
@@ -31,7 +31,7 @@ public class Queue {
         Food dequeuedFood = new Food();
         dequeuedFood = foods[0];
 
-        for (int i = 0; i < foods.length; i++) { // this did the first element
+        for (int i = 0; i < foods.length; i++) {
             if (foods[i] != null) {
                 foods[i] = foods[i + 1];
             }
