@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class BaseFile {
 
-	public static void main(String[] pArgs) throws IOException {
+	public static void main(String[] args) throws IOException {
 
 		Scanner input = new Scanner(System.in);
 		File inputFile = new File("");
