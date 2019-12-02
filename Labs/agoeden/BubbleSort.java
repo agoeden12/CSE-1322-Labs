@@ -21,21 +21,21 @@ public class BubbleSort {
 
   public static void main(String[] args) {
     int a = 10000;
-    int[] ReverseArray = new int[100000];
+    int[] reverseArr = new int[100000];
     for (int i = 0; i < 100000; i++) {
-      ReverseArray[i] = a;
+      reverseArr[i] = a;
       a--;
     }
-    int[] CloneArray = ReverseArray;
+    int[] cloneArr = reverseArr;
 
     long startTime = System.currentTimeMillis();
-    sort(ReverseArray);
+    sort(reverseArr);
     long endTime = System.currentTimeMillis();
     System.out.println("\nParallel time with " + Runtime.getRuntime().availableProcessors() + " processors is "
         + (endTime - startTime) + " milliseconds");
 
     startTime = System.currentTimeMillis();
-    bubbleSort(CloneArray, 100000);
+    bubbleSort(cloneArr, cloneArr.length);
     endTime = System.currentTimeMillis();
     System.out.println("\nSequential time is " + (endTime - startTime) + " milliseconds");
   }
