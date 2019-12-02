@@ -1,80 +1,65 @@
 package agoeden;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 public class BaseFile {
 
-	public static void main(String[] args) throws IOException {
+	static int totalKeyCount = 0;
 
-		Scanner input = new Scanner(System.in);
-		File inputFile = new File("");
-		File toFile = new File("");
-		String fromFileName, toFileName;
-		boolean abort = false;
+	public static void main(String[] args) throws IOException, InterruptedException {
+		File inputFile = new File("Labs/agoeden/test.txt");
+		String[] fileStringArr = getFileString(inputFile).split(" ");
 
-		while (!abort) {
-			try {
-				System.out.print("Enter the old file name (must be in src folder): ");
-				fromFileName = input.nextLine();
-				inputFile = new File(String.format("Labs/agoeden/%s.txt", fromFileName));
-				if (!inputFile.exists())
-					throw new FileException(String.format("Could not find file \"%s\".", inputFile.getName()));
+		ExecutorService eService = Executors.newFixedThreadPool(3);
+		eService.execute(()-> {
+			incrementKeyCount(findKeyCount("the", Arrays.copyOfRange(fileStringArr, 0 , fileStringArr.length / 3)));
+		});
+		eService.execute(()-> {
+			incrementKeyCount(findKeyCount("the", Arrays.copyOfRange(fileStringArr, fileStringArr.length / 3, (fileStringArr.length / 3) * 2)));
+		});
+		eService.execute(()-> {
+			incrementKeyCount(findKeyCount("the", Arrays.copyOfRange(fileStringArr, (fileStringArr.length/3) * 2, fileStringArr.length)));
+		});
 
-				if (!inputFile.canRead())
-					throw new FileException(String.format("Could not read file \"%s\".", inputFile.getName()));
+		eService.shutdown();
+		boolean finished = eService.awaitTermination(1, TimeUnit.MINUTES);
 
-				abort = true;
-			} catch (FileException exception) {
-				System.out.println(exception.getMessage());
-				System.out.print("Would you like to abort or try again? (abort y/n): ");
-				abort = input.nextLine().contains("y") ? true : false;
-			}
+
+		if (finished) {
+			System.out.println(totalKeyCount);
 		}
-
-		abort = false;
-
-		while (!abort) {
-			try {
-				System.out.print("Enter the new file name: ");
-				toFileName = input.nextLine();
-				toFile = new File(String.format("Labs/agoeden/%s.txt", toFileName));
-				if (toFile.exists())
-					throw new FileException(String.format(
-							"File \"%1$s\" already exists, would you like to overwrite \"%1$s\" or enter a new name? (overwrite y/n): ",
-							toFile.getName()));
-				abort = true;
-			} catch (FileException exception) {
-				System.out.print(exception.getMessage());
-				abort = input.nextLine().contains("y") ? true : false;
-			}
-		}
-
-		copyFile(inputFile, toFile);
-
-		input.close();
 	}
 
-	public static void copyFile(File inputFile, File toFile) throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(toFile));
-		try (Stream<String> linesStream = Files.lines(inputFile.toPath())) {
-			linesStream.forEach(line -> {
-				try {
-					if (line.equals("")) {
-						writer.newLine();
-						writer.newLine();
-					} else
-						writer.write(line);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+	public static void incrementKeyCount(int input) {
+		totalKeyCount += input;
+	}
+
+	public static String getFileString(File inputFile) throws IOException {
+		StringBuilder contentBuilder = new StringBuilder();
+		try (Stream<String> stream = Files.lines(inputFile.toPath())) {
+			stream.forEach(line -> {
+				contentBuilder.append(line);
 			});
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		writer.close();
+		return contentBuilder.toString();
+	}
+
+	public static int findKeyCount(String key, String[] input) {
+		int count = 0;
+		for (String word : input) {
+			if (word.toLowerCase().equals(key)){
+				count++;
+			}
+		}
+		return count;
 	}
 }
